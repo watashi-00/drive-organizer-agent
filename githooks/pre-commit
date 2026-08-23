@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+set -eu
+
+repo_root="$(git rev-parse --show-toplevel)"
+PYTHONPATH="$repo_root/src${PYTHONPATH:+:$PYTHONPATH}" python -m drive_organizer_agent.git_safety pre-commit

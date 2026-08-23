@@ -74,6 +74,24 @@ source .venv/bin/activate
 pip install -e .
 ```
 
+## Git Safety Hook
+
+This repository includes an optional Git `pre-commit` hook that checks staged JSON files before a commit.
+
+It blocks known local credential files such as `credentials.json` and `token.json`. If a staged JSON file looks like a Google Drive inventory, the hook asks for explicit confirmation before allowing the commit.
+
+Git does not enable repository hooks automatically after clone. Install the hook once per clone:
+
+```bash
+drive-organizer-install-hooks
+```
+
+For intentional non-interactive commits that include Drive inventory JSON, set:
+
+```bash
+DRIVE_ORGANIZER_ALLOW_INVENTORY_JSON=1 git commit
+```
+
 ## Basic Usage
 
 Authorize and list your Drive:
@@ -175,10 +193,13 @@ drive-organizer list --query "mimeType = 'application/pdf' and trashed = false" 
 .
 ├── README.md
 ├── SKILL.md
+├── githooks/
+│   └── pre-commit
 ├── pyproject.toml
 └── src/
     └── drive_organizer_agent/
         ├── __init__.py
         ├── cli.py
+        ├── git_safety.py
         └── google_drive.py
 ```

@@ -20,7 +20,8 @@ dependencies = [
 
 [project.scripts]
 drive-organizer = "drive_organizer_agent.cli:main"
+drive-organizer-install-hooks = "drive_organizer_agent.git_safety:install_hooks_main"
+drive-organizer-check-staged-json = "drive_organizer_agent.git_safety:pre_commit_main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-
