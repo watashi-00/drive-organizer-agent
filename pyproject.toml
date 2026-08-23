@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drive-organizer-agent"
+version = "0.1.0"
+description = "Agent-friendly Google Drive organization toolkit."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Drive Organizer Agent Contributors" }
+]
+dependencies = [
+  "google-api-python-client>=2.140.0",
+  "google-auth-httplib2>=0.2.0",
+  "google-auth-oauthlib>=1.2.0"
+]
+
+[project.scripts]
+drive-organizer = "drive_organizer_agent.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
